@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './App.module.css';
 import Button from './components/UI/Button';
+import Demo from './components/Demo/Demo';
 
 function App() {
 
@@ -13,7 +14,7 @@ function App() {
   return (
     <div className={styles.app}>
       <h1>Hello</h1>
-      {showPara && <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>}
+      <Demo show={showPara} />
       <Button onClick={getPara} >Click for para</Button>
     </div>
   );
