@@ -1,0 +1,14 @@
+.btn{
+    font: inherit;
+    background-color: rgb(245, 170, 182);
+    border: 1px solid pink;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.5rem;
+    cursor: pointer;
+    margin: 0.5rem;
+}
+
+.btn:active,
+.btn:hover{
+    background-color: rgb(250, 127, 147);
+}
