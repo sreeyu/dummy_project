@@ -6,15 +6,24 @@ import Demo from './components/Demo/Demo';
 function App() {
 
   const[showPara, setShowPara] = useState(false);
+  const [allowButton, setAllowButton] = useState(false);
+
+  const getButton = () => {
+    setAllowButton(true);
+  }
 
   const getPara = useCallback (() => {
-    setShowPara(prevParaState => !prevParaState);
-  }, []);
+
+    if(allowButton){
+      setShowPara(prevParaState => !prevParaState);
+    }
+  }, [allowButton]);
 
   return (
     <div className={styles.app}>
       <h1>Hello</h1>
-      <Demo show={false} />
+      <Demo show={showPara} />
+      <Button onClick={getButton}>Activate Button</Button>
       <Button onClick={getPara} >Click for para</Button>
     </div>
   );
