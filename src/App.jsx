@@ -14,7 +14,7 @@ function App() {
   return (
     <div className={styles.app}>
       <h1>Hello</h1>
-      <Demo show={showPara} />
+      <Demo show={false} />
       <Button onClick={getPara} >Click for para</Button>
     </div>
   );
