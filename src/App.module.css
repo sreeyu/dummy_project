@@ -13,3 +13,7 @@
     margin: 0;
     text-align: center;
 }
+
+.clicked{
+    background-color: rgb(250, 127, 147);
+}

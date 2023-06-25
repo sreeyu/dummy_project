@@ -3,8 +3,10 @@ import styles from './Button.module.css'
 
 function Button(props) {
 
+    const btnClass = `${styles.btn} ${props.isClicked ? styles.clicked : ''}`
+
     return(
-        <button className={styles.btn} onClick={props.onClick}>{props.children}</button>
+        <button className={btnClass} onClick={props.onClick}>{props.children}</button>
     );
 };
 

@@ -8,8 +8,9 @@ function App() {
   const[showPara, setShowPara] = useState(false);
   const [allowButton, setAllowButton] = useState(false);
 
+
   const getButton = () => {
-    setAllowButton(true);
+    setAllowButton(prevState => !prevState);
   }
 
   const getPara = useCallback (() => {
@@ -19,11 +20,13 @@ function App() {
     }
   }, [allowButton]);
 
+  const btnContent = allowButton ? 'Deactivate Button' : 'Activate Button'
+
   return (
     <div className={styles.app}>
       <h1>Hello</h1>
       <Demo show={showPara} />
-      <Button onClick={getButton}>Activate Button</Button>
+      <Button isClicked={allowButton} onClick={getButton}>{btnContent}</Button>
       <Button onClick={getPara} >Click for para</Button>
     </div>
   );
