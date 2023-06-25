@@ -1,18 +1,26 @@
-import React from "react";
+import React, { useMemo } from "react";
 import styles from './DemoList.module.css'
 
 function DemoList(props){
 
+    console.log("list running")
+
+    const { list } = props;
+
+    const sorted = useMemo (() => {
+        console.log('list sorted')
+        return list.sort((a,b) => a- b);
+    }, [list])
     return(
         <div>
             <h1>{props.title}</h1>
             <ul className={styles.list}>
-                {props.list.sort((a,b) => a- b).map(num => 
-                    <li>{num}</li>
+                {sorted.map(num => 
+                    <li key={num}>{num}</li>
                 )}
             </ul>
         </div>
     );
 };
 
-export default DemoList;
+export default React.memo(DemoList);

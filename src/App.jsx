@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useMemo } from 'react';
 import styles from './App.module.css';
 import Button from './components/UI/Button';
 import Demo from './components/Demo/Demo';
@@ -22,11 +22,13 @@ function App() {
     }
   }, [allowButton]);
 
-  const getTitle = () => {
+  const getTitle = useCallback (() => {
     setTitleName('New List')
-  }
+  }, [])
 
   const btnContent = allowButton ? 'Deactivate Button' : 'Activate Button'
+
+  const items = useMemo(() => [3, 5, 7,23,56, 90, 82], [])
 
   return (
     <div className={styles.app}>
@@ -37,7 +39,7 @@ function App() {
       <Button onClick={getPara} >Click for para</Button>
       </main>
       <section className={styles.section}>
-        <DemoList list={[3, 5, 7,23,56, 90, 82]} title={titleName} />
+        <DemoList list={items} title={titleName} />
         <Button onClick={getTitle} >Change List Title</Button>
       </section>
     </div>
