@@ -8,6 +8,7 @@ function App() {
 
   const[showPara, setShowPara] = useState(false);
   const [allowButton, setAllowButton] = useState(false);
+  const [titleName, setTitleName] = useState('My List')
 
 
   const getButton = () => {
@@ -21,6 +22,10 @@ function App() {
     }
   }, [allowButton]);
 
+  const getTitle = () => {
+    setTitleName('New List')
+  }
+
   const btnContent = allowButton ? 'Deactivate Button' : 'Activate Button'
 
   return (
@@ -32,9 +37,8 @@ function App() {
       <Button onClick={getPara} >Click for para</Button>
       </main>
       <section className={styles.section}>
-        <h1>My List</h1>
-        <DemoList list={[3, 5, 7,23,56, 90, 82]} />
-        <Button>Change List Title</Button>
+        <DemoList list={[3, 5, 7,23,56, 90, 82]} title={titleName} />
+        <Button onClick={getTitle} >Change List Title</Button>
       </section>
     </div>
   );
