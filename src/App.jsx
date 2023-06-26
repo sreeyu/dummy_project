@@ -8,7 +8,7 @@ function App() {
 
   const[showPara, setShowPara] = useState(false);
   const [allowButton, setAllowButton] = useState(false);
-  const [titleName, setTitleName] = useState('My List')
+  const [titleName, setTitleName] = useState(false)
 
 
   const getButton = () => {
@@ -23,10 +23,12 @@ function App() {
   }, [allowButton]);
 
   const getTitle = useCallback (() => {
-    setTitleName('New List')
+    setTitleName(prevState => !prevState)
   }, [])
 
-  const btnContent = allowButton ? 'Deactivate Button' : 'Activate Button'
+  const btnContent = allowButton ? 'Deactivate Button' : 'Activate Button';
+
+  const titleContent = titleName ? 'My List' : 'New Title';
 
   const items = useMemo(() => [3, 5, 7,23,56, 90, 82], [])
 
@@ -39,7 +41,7 @@ function App() {
       <Button onClick={getPara} >Click for para</Button>
       </main>
       <section className={styles.section}>
-        <DemoList list={items} title={titleName} />
+        <DemoList list={items} title={titleContent} />
         <Button onClick={getTitle} >Change List Title</Button>
       </section>
     </div>
